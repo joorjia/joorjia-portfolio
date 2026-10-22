@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joorjia | Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Professional developer portfolio for Joorjia — showcasing experience, skills, and projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2b;
+        --panel: rgba(18, 25, 40, 0.8);
+        --card: #111827;
+        --card-2: #0f172a;
+        --text: #e5eefb;
+        --muted: #a7b5d1;
+        --primary: #7c9cff;
+        --primary-2: #8ef0d9;
+        --accent: #ff7b72;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 156, 255, 0.18), transparent 25%),
+          radial-gradient(circle at bottom right, rgba(142, 240, 217, 0.14), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: rgba(11, 16, 32, 0.7);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+
+      .brand {
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        color: var(--primary-2);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 600;
+        background: linear-gradient(135deg, var(--primary), #a88bff);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 100px 0 70px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 52px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid rgba(124, 156, 255, 0.3);
+        background: rgba(124, 156, 255, 0.08);
+        border-radius: 999px;
+        color: var(--primary-2);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin-top: 24px;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+
+      .highlight {
+        color: var(--primary-2);
+      }
+
+      .subtitle {
+        max-width: 640px;
+        margin-top: 22px;
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 22px;
+        border-radius: 14px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, var(--primary), #9a8cff);
+        box-shadow: 0 18px 35px rgba(124, 156, 255, 0.25);
+      }
+
+      .secondary-btn {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .primary-btn:hover,
+      .secondary-btn:hover,
+      .nav-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .socials a {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .hero-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(10, 15, 25, 0.96));
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: var(--shadow);
+      }
+
+      .profile-wrap {
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px;
+      }
+
+      .profile-image {
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.18), rgba(142, 240, 217, 0.08));
+        min-height: 440px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .avatar {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.1) 30%, transparent 32%),
+          linear-gradient(135deg, var(--primary), var(--primary-2));
+        position: relative;
+        box-shadow: 0 20px 40px rgba(124, 156, 255, 0.25);
+      }
+
+      .avatar::before,
+      .avatar::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(11, 16, 32, 0.8);
+      }
+
+      .avatar::before {
+        width: 100px;
+        height: 100px;
+        left: 60px;
+        top: 40px;
+      }
+
+      .avatar::after {
+        width: 150px;
+        height: 90px;
+        left: 35px;
+        bottom: 28px;
+      }
+
+      .mini-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .mini-stat {
+        padding: 16px 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 16px;
+        text-align: center;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 800;
+      }
+
+      .mini-stat span {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      section {
+        padding: 32px 0 18px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 26px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        max-width: 500px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+      }
+
+      .panel {
+        background: rgba(17, 24, 39, 0.8);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .panel p {
+        color: var(--muted);
+        margin-top: 14px;
+      }
+
+      .info-list {
+        list-style: none;
+        margin-top: 22px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .info-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .info-list li strong {
+        color: var(--text);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .skill-card {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(17, 24, 39, 0.75);
+        border: 1px solid var(--border);
+      }
+
+      .skill-card h3 {
+        margin-bottom: 14px;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        padding: 8px 12px;
+        background: rgba(124, 156, 255, 0.08);
+        border: 1px solid rgba(124, 156, 255, 0.2);
+        border-radius: 999px;
+        color: var(--text);
+        font-size: 0.82rem;
+      }
+
+      .exp-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 18px;
+        border-left: 1px solid var(--border);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 18px;
+        padding-left: 24px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -26px;
+        top: 10px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        box-shadow: 0 0 0 5px rgba(124, 156, 255, 0.12);
+      }
+
+      .timeline-item .meta {
+        color: var(--primary-2);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .timeline-item h3 {
+        margin-bottom: 8px;
+      }
+
+      .timeline-item p {
+        color: var(--muted);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project-card {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(17, 24, 39, 0.75);
+        border: 1px solid var(--border);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(124, 156, 255, 0.28);
+      }
+
+      .project-card .project-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .project-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.18), rgba(142, 240, 217, 0.12));
+        color: var(--primary-2);
+        font-weight: 800;
+      }
+
+      .project-card h3 {
+        margin-bottom: 10px;
+      }
+
+      .project-card p {
+        color: var(--muted);
+      }
+
+      .project-card .tags {
+        margin-top: 18px;
+      }
+
+      .contact {
+        padding-bottom: 100px;
+      }
+
+      .contact-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 34px;
+        border-radius: 26px;
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.15), rgba(142, 240, 217, 0.08));
+        border: 1px solid rgba(124, 156, 255, 0.18);
+      }
+
+      .contact-card h3 {
+        font-size: clamp(1.8rem, 2vw, 2.5rem);
+        letter-spacing: -0.05em;
+      }
+
+      .contact-card p {
+        color: var(--muted);
+        margin-top: 8px;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 24px 0 40px;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .exp-grid,
+        .projects-grid,
+        .skills-grid,
+        .contact-card {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 70px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .cta-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .primary-btn,
+        .secondary-btn,
+        .nav-btn {
+          width: 100%;
+        }
+
+        .mini-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#home" class="brand">Joor<span>jia</span></a>
+
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="nav-btn">Hire Me</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Full-Stack Developer</span>
+            <h1>
+              I design and build <span class="highlight">beautiful digital experiences</span>
+            </h1>
+            <p class="subtitle">
+              I’m Joorjia, a passionate developer focused on creating clean, modern, and
+              user-centered web applications that combine performance, accessibility, and great
+              design.
+            </p>
+
+            <div class="cta-row">
+              <a href="#projects" class="primary-btn">View Projects</a>
+              <a href="#contact" class="secondary-btn">Contact Me</a>
+            </div>
+
+            <div class="socials">
+              <a href="#" aria-label="GitHub">GH</a>
+              <a href="#" aria-label="LinkedIn">IN</a>
+              <a href="#" aria-label="Email">✉</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="profile-wrap">
+              <div class="profile-image">
+                <div class="avatar" aria-label="Joorjia avatar"></div>
+              </div>
+            </div>
+
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <strong>5+</strong>
+                <span>Years</span>
+              </div>
+              <div class="mini-stat">
+                <strong>18</strong>
+                <span>Projects</span>
+              </div>
+              <div class="mini-stat">
+                <strong>100%</strong>
+                <span>Driven</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About Me</h2>
+            <p>
+              I build products that are not only functional, but also fast, intuitive, and
+              memorable to use.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="panel">
+              <h3>Who I am</h3>
+              <p>
+                I am a professional developer with a strong focus on frontend engineering,
+                user experience, and scalable web architecture. I enjoy turning ideas into
+                polished products that solve real problems and deliver value.
+              </p>
+              <p>
+                My work blends technical precision with design sensibility, ensuring every
+                interface is both elegant and effective.
+              </p>
+            </div>
+
+            <div class="panel">
+              <h3>Quick Details</h3>
+              <ul class="info-list">
+                <li><span>Location</span><strong>Remote / Global</strong></li>
+                <li><span>Specialization</span><strong>Web Development</strong></li>
+                <li><span>Email</span><strong>joorjia@example.com</strong></li>
+                <li><span>Availability</span><strong>Open to work</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2>Skills</h2>
+            <p>I work across modern web stacks with a focus on craft, performance, and clarity.</p>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Frontend</h3>
+              <div class="tag-list">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Next.js</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Backend</h3>
+              <div class="tag-list">
+                <span class="tag">Node.js</span>
+                <span class="tag">Express</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Firebase</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Tools</h3>
+              <div class="tag-list">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Figma</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">CI/CD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-header">
+            <h2>Experience</h2>
+            <p>
+              I’ve helped teams design, build, and optimize user-facing products with a strong
+              focus on quality and business impact.
+            </p>
+          </div>
+
+          <div class="exp-grid">
+            <div class="panel">
+              <h3>Work History</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="meta">2022 — Present</div>
+                  <h3>Senior Frontend Developer</h3>
+                  <p>
+                    Built scalable interfaces and collaborated closely with design and product
+                    teams to ship modern digital experiences.
+                  </p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="meta">2020 — 2022</div>
+                  <h3>Full-Stack Developer</h3>
+                  <p>
+                    Developed web applications, optimized backend services, and improved
+                    performance and maintainability across client projects.
+                  </p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="meta">2018 — 2020</div>
+                  <h3>Web Developer</h3>
+                  <p>
+                    Created responsive marketing sites, dashboards, and custom tools that
+                    improved business operations and customer engagement.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h3>What I bring</h3>
+              <ul class="info-list">
+                <li><span>Product thinking</span><strong>Strong</strong></li>
+                <li><span>UI/UX craftsmanship</span><strong>Strong</strong></li>
+                <li><span>Performance optimization</span><strong>Advanced</strong></li>
+                <li><span>Team collaboration</span><strong>Excellent</strong></li>
+                <li><span>Problem solving</span><strong>High impact</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>Selected work demonstrating my focus on usability, quality, and measurable impact.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon">01</div>
+              </div>
+              <h3>Modern SaaS Dashboard</h3>
+              <p>
+                Designed and built a data-heavy analytics platform with a clean interface,
+                responsive layout, and real-time reporting.
+              </p>
+              <div class="tag-list tags">
+                <span class="tag">React</span>
+                <span class="tag">Charts</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon">02</div>
+              </div>
+              <h3>E-Commerce Experience</h3>
+              <p>
+                Improved mobile shopping flow and conversion-focused UI for a modern commerce
+                product with strong onboarding and checkout UX.
+              </p>
+              <div class="tag-list tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">UX</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon">03</div>
+              </div>
+              <h3>Operations Platform</h3>
+              <p>
+                Built internal tools to simplify workflow tracking, automate repetitive tasks,
+                and improve operational visibility for teams.
+              </p>
+              <div class="tag-list tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">API</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <div class="contact-card">
+            <div>
+              <h3>Let’s build something great.</h3>
+              <p>I’m open to freelance work, product collaborations, and full-time opportunities.</p>
+            </div>
+            <a href="mailto:joorjia@example.com" class="primary-btn">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2026 Joorjia</div>
+        <div>Built with passion for modern web experiences.</div>
+      </div>
+    </footer>
+  </body>
+</html>
